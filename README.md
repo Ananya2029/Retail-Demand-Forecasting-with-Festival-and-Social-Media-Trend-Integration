@@ -44,6 +44,38 @@ Additional engineered features:
 
 ---
 
+## Workflow
+
+Data Collection
+      ↓
+Data Cleaning & Preprocessing
+      ↓
+EDA (Sales patterns, trends)
+      ↓
+Festival Feature Engineering
+      ↓
+Social Media Trend Simulation
+      ↓
+Feature Engineering (lags, rolling, interactions)
+      ↓
+Model Training (XGBoost, RF, LightGBM)
+      ↓
+Model Evaluation (RMSE, MAE, R²)
+      ↓
+SHAP Explainability
+      ↓
+Forecast Generation
+      ↓
+Streamlit Dashboard
+
+---
+
+## Architecture
+
+Dataset → Preprocessing → Feature Engineering → Model → Forecast → Dashboard
+
+---
+
 ## Methodology
 
 ### Phase 1: Data Understanding
@@ -194,6 +226,57 @@ Best Model: XGBoost Regressor
 * LightGBM
 * SHAP
 * Streamlit
+
+---
+🚀 8. How to Run the Project
+
+Follow the steps below to run the project locally on your system:
+
+🔹 Step 1: Clone the Repository
+git clone https://github.com/Ananya2029/Retail-Demand-Forecasting-with-Festival-and-Social-Media-Trend-Integration.git
+
+🔹 Step 2: Navigate to Project Folder
+cd Retail-Demand-Forecasting-with-Festival-and-Social-Media-Trend-Integration
+
+🔹 Step 3: Create Virtual Environment (Optional but Recommended)
+python -m venv venv
+
+Activate it:
+
+Windows:
+
+venv\Scripts\activate
+
+Mac/Linux:
+source venv/bin/activate
+
+🔹 Step 4: Install Dependencies
+pip install -r requirements.txt
+
+🔹 Step 5: Run Jupyter Notebooks (Optional)
+
+To explore data preprocessing and model training:
+
+jupyter notebook
+
+Then open files inside the src/ folder.
+
+Step 6: Run Streamlit Dashboard
+cd dashboard
+streamlit run app.py
+🔹 Step 7: View Output
+
+After running Streamlit, open the link shown in terminal:
+
+http://localhost:8501
+
+You will see:
+
+Sales trends
+Festival analysis
+Social media impact
+Forecast predictions
+SHAP explainability dashboard
 
 ---
 
