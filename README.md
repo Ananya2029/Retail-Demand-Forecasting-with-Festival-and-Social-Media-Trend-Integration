@@ -228,32 +228,38 @@ Best Model: XGBoost Regressor
 * Streamlit
 
 ---
-🚀 8. How to Run the Project
+
+## How to Run the Project
 
 Follow the steps below to run the project locally on your system:
 
-🔹 Step 1: Clone the Repository
+### Step 1: Clone the Repository
+
 git clone https://github.com/Ananya2029/Retail-Demand-Forecasting-with-Festival-and-Social-Media-Trend-Integration.git
 
-🔹 Step 2: Navigate to Project Folder
+### Step 2: Navigate to Project Folder
+
 cd Retail-Demand-Forecasting-with-Festival-and-Social-Media-Trend-Integration
 
-🔹 Step 3: Create Virtual Environment (Optional but Recommended)
+### Step 3: Create Virtual Environment
+
 python -m venv venv
 
 Activate it:
 
-Windows:
+**Windows:**
 
 venv\Scripts\activate
 
-Mac/Linux:
+**Mac/Linux:**
+
 source venv/bin/activate
 
-🔹 Step 4: Install Dependencies
+### Step 4: Install Dependencies
+
 pip install -r requirements.txt
 
-🔹 Step 5: Run Jupyter Notebooks (Optional)
+### Step 5: Run Jupyter Notebooks (Optional)
 
 To explore data preprocessing and model training:
 
@@ -261,10 +267,13 @@ jupyter notebook
 
 Then open files inside the src/ folder.
 
-Step 6: Run Streamlit Dashboard
+### Step 6: Run Streamlit Dashboard
+
 cd dashboard
+
 streamlit run app.py
-🔹 Step 7: View Output
+
+### Step 7: View Output
 
 After running Streamlit, open the link shown in terminal:
 
@@ -272,11 +281,11 @@ http://localhost:8501
 
 You will see:
 
-Sales trends
-Festival analysis
-Social media impact
-Forecast predictions
-SHAP explainability dashboard
+* Sales trends
+* Festival analysis
+* Social media impact
+* Forecast predictions
+* SHAP explainability dashboard
 
 ---
 
