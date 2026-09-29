@@ -1,0 +1,73 @@
+{
+  "test_period": [
+    "2012-05-04",
+    "2012-10-26"
+  ],
+  "best_model": "XGBoost",
+  "models": {
+    "Naive (last week)": {
+      "MAE": 50865.0,
+      "RMSE": 76053.0,
+      "WMAPE_%": 4.88,
+      "R2": 0.9798
+    },
+    "Seasonal naive (same week last year)": {
+      "MAE": 54031.0,
+      "RMSE": 81786.0,
+      "WMAPE_%": 5.19,
+      "R2": 0.9766
+    },
+    "Random Forest": {
+      "MAE": 37999.0,
+      "RMSE": 60244.0,
+      "WMAPE_%": 3.65,
+      "R2": 0.9873
+    },
+    "LightGBM": {
+      "MAE": 39711.0,
+      "RMSE": 60610.0,
+      "WMAPE_%": 3.81,
+      "R2": 0.9872
+    },
+    "XGBoost": {
+      "MAE": 37363.0,
+      "RMSE": 56487.0,
+      "WMAPE_%": 3.59,
+      "R2": 0.9889
+    }
+  },
+  "ablation": {
+    "Base (sales history + calendar + economy)": {
+      "MAE": 38510.0,
+      "RMSE": 59230.0,
+      "WMAPE_%": 3.7,
+      "R2": 0.9878
+    },
+    "+ Festival features": {
+      "MAE": 38191.0,
+      "RMSE": 58898.0,
+      "WMAPE_%": 3.67,
+      "R2": 0.9879
+    },
+    "+ Festival + simulated social": {
+      "MAE": 37363.0,
+      "RMSE": 56487.0,
+      "WMAPE_%": 3.59,
+      "R2": 0.9889
+    }
+  },
+  "festival_weeks": {
+    "Base": {
+      "MAE": 43191.0,
+      "RMSE": 67989.0,
+      "WMAPE_%": 4.14,
+      "R2": 0.9837
+    },
+    "+ Festival features": {
+      "MAE": 42627.0,
+      "RMSE": 66999.0,
+      "WMAPE_%": 4.09,
+      "R2": 0.9842
+    }
+  }
+}

@@ -5,7 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-import joblib
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
 
 st.set_page_config(
     page_title="Retail Demand Forecasting",
@@ -20,7 +22,7 @@ st.title(
 def load_data():
 
     df = pd.read_csv(
-        "../data/processed/final_featured_sales.csv"
+        ROOT / "data" / "processed" / "final_featured_sales.csv"
     )
 
     return df
@@ -40,10 +42,11 @@ store_id = st.sidebar.selectbox(
     format_func=lambda x: f"Store {x}"
 )
 
-# Forecast Horizon
+# How many test weeks to show in the forecast view
 forecast_horizon = st.sidebar.selectbox(
-    "Forecast Horizon",
-    [7, 30, 90]
+    "Forecast weeks to show",
+    [8, 13, 26],
+    index=2
 )
 
 # Festival Filter
@@ -190,7 +193,12 @@ ax.set_title(
 st.pyplot(fig)
 
 st.header(
-    "Social Media Analytics"
+    "Social Media Analytics (simulated signals)"
+)
+
+st.caption(
+    "Social-media buzz is simulated from the festival calendar plus noise — "
+    "no real social data exists for these 2010–2012 stores. See the README."
 )
 
 fig, ax = plt.subplots(
@@ -239,20 +247,28 @@ sns.heatmap(
 
 st.pyplot(fig)
 
-forecast_df = pd.read_csv(
-    "../outputs/forecast_results.csv"
-)
-
 st.header(
-    "Demand Forecast"
-)
-
-forecast_view = forecast_df.head(
-    forecast_horizon
+    "Model Performance (test: last 26 weeks)"
 )
 
 st.dataframe(
-    forecast_view
+    pd.read_csv(ROOT / "outputs" / "model_comparison.csv", index_col=0)
+)
+
+predictions = pd.read_csv(
+    ROOT / "outputs" / "predictions.csv"
+)
+
+forecast_df = predictions[
+    predictions["Store"] == store_id
+].tail(forecast_horizon)
+
+st.header(
+    f"Demand Forecast — Store {store_id}"
+)
+
+st.dataframe(
+    forecast_df
 )
 
 fig, ax = plt.subplots(
@@ -260,19 +276,23 @@ fig, ax = plt.subplots(
 )
 
 ax.plot(
-
-    pd.to_datetime(
-        forecast_view["Date"]
-    ),
-
-    forecast_view[
-        "Predicted_Sales"
-    ]
-
+    pd.to_datetime(forecast_df["Date"]),
+    forecast_df["Weekly_Sales"],
+    label="Actual",
+    color="black"
 )
 
+ax.plot(
+    pd.to_datetime(forecast_df["Date"]),
+    forecast_df["Predicted_Sales"],
+    label="One-week-ahead forecast",
+    color="tab:red"
+)
+
+ax.legend()
+
 ax.set_title(
-    f"Next {forecast_horizon} Forecast Periods"
+    f"Store {store_id}: actual vs forecast, last {forecast_horizon} test weeks"
 )
 
 st.pyplot(fig)
@@ -308,7 +328,7 @@ st.dataframe(
 if show_shap:
 
     shap_df = pd.read_csv(
-        "../outputs/shap_feature_importance.csv"
+        ROOT / "outputs" / "shap_feature_importance.csv"
     )
 
     st.header(

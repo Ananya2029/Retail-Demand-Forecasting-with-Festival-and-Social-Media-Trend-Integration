@@ -1,0 +1,4 @@
+,MAE,RMSE,WMAPE_%,R2
+Base (sales history + calendar + economy),38510.0,59230.0,3.7,0.9878
++ Festival features,38191.0,58898.0,3.67,0.9879
++ Festival + simulated social,37363.0,56487.0,3.59,0.9889
